@@ -17,6 +17,18 @@ function solveEquation(a, b, c) {
   return arr;
 }
 
+
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
   
+  let monthlyInterestRate = (percent / 100) / 12;
+  
+  let loanPrincipal = amount - contribution;
+  
+  let monthlyPayment = loanPrincipal * (monthlyInterestRate + (monthlyInterestRate / (Math.pow(1 + monthlyInterestRate, countMonths) - 1)));
+  
+  let totalAmount = monthlyPayment * countMonths;
+  
+  totalAmount = Math.round(totalAmount * 100) / 100;
+  
+  return totalAmount;
 }

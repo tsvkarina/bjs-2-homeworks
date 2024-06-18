@@ -10,6 +10,7 @@ class AlarmClock {
         }
         if (this.alarmCollection.some(alarm => alarm.time === time)) {
             console.warn('Уже присутствует звонок на это же время');
+            return;
         }
         this.alarmCollection.push({ time, callback, canCall: true });
     }
@@ -55,18 +56,3 @@ class AlarmClock {
         this.alarmCollection = [];
     }
 }
-
-// Пример использования
-const myAlarmClock = new AlarmClock();
-
-myAlarmClock.addClock("08:00", () => console.log("Пора вставать!"));
-myAlarmClock.addClock("08:01", () => {
-    console.log("Давай, вставай уже!");
-    myAlarmClock.removeClock("08:01");
-});
-myAlarmClock.addClock("08:02", () => {
-    console.log("Вставай, а то проспишь!");
-    myAlarmClock.clearAlarms();
-});
-
-myAlarmClock.start();
